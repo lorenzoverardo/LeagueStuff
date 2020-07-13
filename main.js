@@ -36,6 +36,9 @@ bot.on('message', message =>
         case 'remove':
             bot.commands.get('remove').execute(message, args);
             break;
+        case 'help':
+            bot.commands.get('help').execute(message, args);
+            break;
         default:
             bot.commands.get('default').execute(message, args);
             break;
