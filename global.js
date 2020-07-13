@@ -34,8 +34,8 @@ var Global =
 
     // Get match by match ID https://developer.riotgames.com/apis#match-v4/GET_getMatch
     win : ["", "", "", "", "", "", "", "", "", ""],
-    wins : "",
-    losses : ""
+    winsNumber : "",
+    lossesNumber : ""
 
 };
 module.exports = Global;

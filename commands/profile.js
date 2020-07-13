@@ -35,19 +35,26 @@ module.exports =
 
         let matchlistValue = await getMatchlist();
 
-        global.leagueID = leagueValue[0].leagueId;
-        global.queueType = leagueValue[0].queueType;
-        global.tier = leagueValue[0].tier;
-        global.rank = leagueValue[0].rank;
-        global.summonerID = leagueValue[0].summonerId;
-        global.summonerName = leagueValue[0].summonerName;
-        global.leaguePoints = leagueValue[0].leaguePoints;
-        global.wins = leagueValue[0].wins;
-        global.losses = leagueValue[0].losses;
-        global.veteran = leagueValue[0].veteran;
-        global.inactive = leagueValue[0].inactive;
-        global.freshBlood = leagueValue[0].freshBlood;
-        global.hotStreak = leagueValue[0].hotStreak;
+        try
+        {
+            global.leagueID = leagueValue[0].leagueId;
+            global.queueType = leagueValue[0].queueType;
+            global.tier = leagueValue[0].tier;
+            global.rank = leagueValue[0].rank;
+            global.summonerID = leagueValue[0].summonerId;
+            global.summonerName = leagueValue[0].summonerName;
+            global.leaguePoints = leagueValue[0].leaguePoints;
+            global.wins = leagueValue[0].wins;
+            global.losses = leagueValue[0].losses;
+            global.veteran = leagueValue[0].veteran;
+            global.inactive = leagueValue[0].inactive;
+            global.freshBlood = leagueValue[0].freshBlood;
+            global.hotStreak = leagueValue[0].hotStreak;
+        } catch (UnhandledPromiseRejectionWarning)
+        {
+            global.tier = "Unranked"
+            global.rank = "";
+        }
 
         for (i = 0; i < 10; i++)
         {
@@ -56,39 +63,27 @@ module.exports =
 
         await calls();
 
-        global.wins = 0;
-        global.losses = 0;
+        global.winsNumber = 0;
+        global.lossesNumber = 0;
 
         for (i = 0; i < 10; i++)
         {
             if (global.win[i] === true)
             {
-                global.wins++;
+                global.winsNumber++;
             }
             else if (global.win[i] === false)
             { 
-                global.losses++;
+                global.lossesNumber++;
             }
         }
 
-        if(global.tier != null && global.rank != null)
-        {
-            const profileInfoEmbed = new Discord.MessageEmbed()
-            .addField("Profile: ", global.profile[1], true)
-            .addField("Level / Region", global.summonerLevel +" / "+ global.accountRegion, true)
-            .addField("Rank", global.tier.charAt(0) + global.tier.substring(1).toLowerCase() + " " + global.rank)
-            .addField("Last Games:","10G "+global.wins+"W "+global.losses+"L / "+global.wins/10*100+"% WR", true)
-            message.channel.send(profileInfoEmbed);
-
-        } else
-        {
-            const profileInfoEmbed = new Discord.MessageEmbed()
-            .addField("Profile: ", global.profile[1], true)
-            .addField("Level / Region", global.summonerLevel +" / "+ global.accountRegion, true)
-            .addField("Rank", "Unranked", true)
-            .addField("Last Games:","10G "+global.wins+"W "+global.losses+"L / "+global.wins/10*100+"% WR", true)
-            message.channel.send(profileInfoEmbed);
-        }
+        const profileInfoEmbed = new Discord.MessageEmbed()
+        .addField("Profile: ", global.profile[1], true)
+        .addField("Level / Region", global.summonerLevel +" / "+ global.accountRegion, true)
+        .addField("Rank", global.tier.charAt(0) + global.tier.substring(1).toLowerCase() + " " + global.rank)
+        .addField("Last Games:","10G "+global.winsNumber+"W "+global.lossesNumber+"L / "+global.winsNumber/10*100+"% WR", true)
+        message.channel.send(profileInfoEmbed);
     }
 }
 
