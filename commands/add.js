@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const axios = require('axios');
-const config = require('../config.json');
 
 const global = require('../global.js');
 
@@ -75,7 +74,7 @@ module.exports =
 
             let getSummonerInfo = async() =>
             {
-                let response = await axios.get("https://"+args[0]+".api.riotgames.com/lol/summoner/v4/summoners/by-name/"+args[1]+"?api_key="+config.api_key);
+                let response = await axios.get("https://"+args[0]+".api.riotgames.com/lol/summoner/v4/summoners/by-name/"+args[1]+"?api_key="+process.env.api_key);
                 let summonerInfo = response.data;
                 return summonerInfo;
             }

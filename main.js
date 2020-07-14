@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const config = require('./config.json');
 
 const bot = new Discord.Client();
+const prefix = "!l ";
 
 const fs = require('fs');
 bot.commands = new Discord.Collection();
@@ -15,15 +15,15 @@ for(const file of commandFiles)
 
 bot.once('ready', () =>
 {
-    console.log('The bot is online!');
+    console.log('LeagueStuff is online!');
     bot.user.setActivity('League of Legends', { type: "PLAYING"});
 });
 
 bot.on('message', message =>
 {
-    if(!message.content.startsWith(config.prefix) || message.author.bot) return;
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
 
-    const args = message.content.slice(config.prefix.length).split(/ +/);
+    const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
     switch(command){
@@ -45,4 +45,4 @@ bot.on('message', message =>
     }
 })
 
-bot.login(config.token);
+bot.login(process.env.token);

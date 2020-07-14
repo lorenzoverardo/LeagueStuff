@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const axios = require('axios');
-const config = require('../config.json');
 const global = require('../global.js');
 
 module.exports =
@@ -19,7 +18,7 @@ module.exports =
         
         let getLeague = async() =>
         {
-            let response = await axios.get("https://"+global.serverRegion+".api.riotgames.com/lol/league/v4/entries/by-summoner/"+global.summonerID+"?api_key="+config.api_key);
+            let response = await axios.get("https://"+global.serverRegion+".api.riotgames.com/lol/league/v4/entries/by-summoner/"+global.summonerID+"?api_key="+process.env.api_key);
             let league = response.data;
             return league;
         }
@@ -28,7 +27,7 @@ module.exports =
 
         let getMatchlist = async() =>
         {
-            let response = await axios.get("https://"+global.serverRegion+".api.riotgames.com/lol/match/v4/matchlists/by-account/"+global.accountID+"?endIndex=10&beginIndex=0&api_key="+config.api_key);
+            let response = await axios.get("https://"+global.serverRegion+".api.riotgames.com/lol/match/v4/matchlists/by-account/"+global.accountID+"?endIndex=10&beginIndex=0&api_key="+process.env.api_key);
             let matchlist = response.data;
             return matchlist;
         }
@@ -90,7 +89,7 @@ module.exports =
 // slow af, is there a better way?
 async function calls() {
     let getMatch0 = async () => {
-        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[0] + "?api_key=" + config.api_key);
+        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[0] + "?api_key=" + process.env.api_key);
         let match = response.data;
         return match;
     };
@@ -98,7 +97,7 @@ async function calls() {
     let match0Value = await getMatch0();
 
     let getMatch1 = async () => {
-        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[1] + "?api_key=" + config.api_key);
+        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[1] + "?api_key=" + process.env.api_key);
         let match = response.data;
         return match;
     };
@@ -106,7 +105,7 @@ async function calls() {
     let match1Value = await getMatch1();
 
     let getMatch2 = async () => {
-        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[2] + "?api_key=" + config.api_key);
+        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[2] + "?api_key=" + process.env.api_key);
         let match = response.data;
         return match;
     };
@@ -114,7 +113,7 @@ async function calls() {
     let match2Value = await getMatch2();
 
     let getMatch3 = async () => {
-        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[3] + "?api_key=" + config.api_key);
+        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[3] + "?api_key=" + process.env.api_key);
         let match = response.data;
         return match;
     };
@@ -122,7 +121,7 @@ async function calls() {
     let match3Value = await getMatch3();
 
     let getMatch4 = async () => {
-        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[4] + "?api_key=" + config.api_key);
+        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[4] + "?api_key=" + process.env.api_key);
         let match = response.data;
         return match;
     };
@@ -130,7 +129,7 @@ async function calls() {
     let match4Value = await getMatch4();
 
     let getMatch5 = async () => {
-        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[5] + "?api_key=" + config.api_key);
+        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[5] + "?api_key=" + process.env.api_key);
         let match = response.data;
         return match;
     };
@@ -138,7 +137,7 @@ async function calls() {
     let match5Value = await getMatch5();
 
     let getMatch6 = async () => {
-        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[6] + "?api_key=" + config.api_key);
+        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[6] + "?api_key=" + process.env.api_key);
         let match = response.data;
         return match;
     };
@@ -146,7 +145,7 @@ async function calls() {
     let match6Value = await getMatch6();
 
     let getMatch7 = async () => {
-        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[7] + "?api_key=" + config.api_key);
+        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[7] + "?api_key=" + process.env.api_key);
         let match = response.data;
         return match;
     };
@@ -154,7 +153,7 @@ async function calls() {
     let match7Value = await getMatch7();
 
     let getMatch8 = async () => {
-        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[8] + "?api_key=" + config.api_key);
+        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[8] + "?api_key=" + process.env.api_key);
         let match = response.data;
         return match;
     };
@@ -162,7 +161,7 @@ async function calls() {
     let match8Value = await getMatch8();
 
     let getMatch9 = async () => {
-        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[9] + "?api_key=" + config.api_key);
+        let response = await axios.get("https://" + global.serverRegion + ".api.riotgames.com/lol/match/v4/matches/" + global.gameID[9] + "?api_key=" + process.env.api_key);
         let match = response.data;
         return match;
     };
