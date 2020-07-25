@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 module.exports = 
 {
     name: 'default',
-    description: "Default message if the command in not recognised",
+    description: "Default message if the command is not recognised",
     async execute(message,args)
     {
         const defaultMessageEmbed = new Discord.MessageEmbed()
