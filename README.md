@@ -1,3 +1,5 @@
+This project is now discontinued and the bot is no longer working.
+
 # LeagueStuff
 
 <img align="left" width="80" height="80" src="https://cdn.discordapp.com/avatars/730808590583070760/01a75d27095e4a2980e01234c9e8ba96.png">
